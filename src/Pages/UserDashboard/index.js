@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Styles from "./UserDashboard.module.scss";
 
 const UserDashboard = () => {
-  const dCompName = useSelector((state) => state.dComponents.name);
+  const dCompName = useSelector((state) => state.dashboardComponents.name);
   const setComponent = (componentName) => {
     if (!dCompName) {
       return null;

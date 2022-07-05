@@ -40,7 +40,6 @@ const items = [
   getItem("Surveys", "sub4", "", [
     getItem("Create Survey", "CreateSurvey", <RiAddCircleLine />),
     getItem("Survey List", "SurveyList", <RiListUnordered />),
-    getItem("Assign Users", "AssignUsers", ""),
   ]),
   getItem("Results", "Results", "",),
   getItem("LogOut", "LogOut", <RiLogoutBoxRLine />),

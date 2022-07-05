@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { _setComponent } from "./dashboardActions";
 
 const dashboardStore = createSlice({
-  name: "dComponent",
+  name: "dashboardComponents",
   initialState: {
     name: "",
   },

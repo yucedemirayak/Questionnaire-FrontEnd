@@ -8,15 +8,17 @@ import companyStore from "../Company"
 import managerStore from "../Manager"
 import userStore from "../User"
 import surveyStore from "../Survey"
+import createSurveyStore from "../CreateSurvey"
 
 const rootReducer = combineReducers({
   auth: authStore,
-  dComponents: dashboardStore,
+  dashboardComponents: dashboardStore,
   login: loginStore,
   company: companyStore,
   manager: managerStore,
   user: userStore,
   survey: surveyStore,
+  surveyComponent: createSurveyStore,
 });
 
 const persistConfig = {

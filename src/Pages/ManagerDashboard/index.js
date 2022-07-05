@@ -3,7 +3,7 @@ import Styles from './ManagerDashboard.module.scss'
 import { useSelector } from "react-redux";
 
 const ManagerDashboard = () => {
-  const dCompName = useSelector((state) => state.dComponents.name);
+  const dCompName = useSelector((state) => state.dashboardComponents.name);
   const setComponent = (componentName) => {
     if (!dCompName) {
       return null;

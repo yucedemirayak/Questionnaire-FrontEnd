@@ -9,12 +9,11 @@ import CreateUser from "../../Components/AdminDashboard/Users/CreateUser";
 import UserList from "../../Components/AdminDashboard/Users/UserList";
 import CreateSurvey from "../../Components/AdminDashboard/Surveys/CreateSurvey";
 import SurveyList from "../../Components/AdminDashboard/Surveys/SurveyList";
-import AssignUser from "../../Components/AdminDashboard/Surveys/AssignUsers";
 import Results from "../../Components/AdminDashboard/Results";
 
 
 const AdminDashboard = () => {
-  const dCompName = useSelector((state) => state.dComponents.name);
+  const dCompName = useSelector((state) => state.dashboardComponents.name);
   const setComponent = (componentName) => {
     if (!dCompName) {
       return null;
@@ -36,8 +35,6 @@ const AdminDashboard = () => {
         return <CreateSurvey />;
       case "SurveyList":
         return <SurveyList />;
-      case "AssignUsers":
-        return <AssignUser/>;
       case "Results":
         return <Results/>;
       default:
