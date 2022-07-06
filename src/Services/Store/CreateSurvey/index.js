@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { _setSurveyComponent, _setSurveyTitle } from "./createSurveyActions";
+import { _setSurveyComponent, _setSurveyValues } from "./createSurveyActions";
+import { getCompanyNameById } from "./getCompanyNameById";
 
 const createSurveyStore = createSlice({
   name: "createSurvey",
@@ -8,22 +9,32 @@ const createSurveyStore = createSlice({
     survey: {
       title: "",
       companyId: "",
+      companyName: "",
+      questionQTY: "1",
       questions: [
         {
           title: "",
           questionType: "",
-          surveyId: "",
-          options: [{ text: "", questionId: "", id: "" }],
+          optionQTY: "1",
+          options: [{ text: "", optionType: ""}],
         },
       ],
     },
   },
   reducers: {
     setSurveyComponent: _setSurveyComponent,
-    setSurveyTitle: _setSurveyTitle,
+    setSurveyValues: _setSurveyValues,
+  },
+  extraReducers: {
+    [getCompanyNameById.fulfilled]: (state, action) => {
+      state.survey.companyName = action.payload.data.name;
+    },
+    [getCompanyNameById.rejected]: (state, action) => {
+      state.survey.companyName = undefined;
+    },
   },
 });
 
-export const { setSurveyComponent, setSurveyTitle } = createSurveyStore.actions;
+export const { setSurveyComponent, setSurveyValues } = createSurveyStore.actions;
 
 export default createSurveyStore.reducer;

@@ -2,7 +2,7 @@ export const _setSurveyComponent = (state, action) => {
     state.componentName = action.payload;
   };
 
-  export const _setSurveyTitle = (state, action) => {
+  export const _setSurveyValues = (state, action) => {
     state.survey.title = action.payload.title;
     state.survey.companyId = action.payload.companyId;
   };

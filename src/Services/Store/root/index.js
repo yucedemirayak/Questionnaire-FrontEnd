@@ -18,13 +18,13 @@ const rootReducer = combineReducers({
   manager: managerStore,
   user: userStore,
   survey: surveyStore,
-  surveyComponent: createSurveyStore,
+  createSurvey: createSurveyStore,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth" , "company" , "manager"],
+  whitelist: ["auth" , "company" , "manager", "createSurvey"],
 };
 
 const reducers = persistReducer(persistConfig, rootReducer);

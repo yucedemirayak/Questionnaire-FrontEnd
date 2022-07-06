@@ -6,16 +6,22 @@ import { useSelector } from "react-redux";
 import { getCompanyNames } from "../../../../../../Services/Store/Company/getCompanyNames";
 import {
   setSurveyComponent,
-  setSurveyTitle,
+  setSurveyValues,
 } from "../../../../../../Services/Store/CreateSurvey";
+import { getCompanyNameById } from "../../../../../../Services/Store/CreateSurvey/getCompanyNameById";
+import { SurveyValuesModel } from "../../../../../../Services/Utils/Forms/Survey/Values/initialModel";
+import { SurveyValuesValidationScheme } from "../../../../../../Services/Utils/Forms/Survey/Values/validationScheme";
 
 const CreateTitle = () => {
   const dispatch = useDispatch();
   const companyNameList = useSelector((state) => state.company.nameList);
 
   const createNewSurveyTitle = async (values) => {
-    await dispatch(setSurveyTitle(values));
+    await dispatch(setSurveyValues(values));
     await dispatch(setSurveyComponent("CreateQuestion"));
+    console.log(values);
+    var companyId = Object.values(values)[1];
+    await dispatch(getCompanyNameById(companyId));
   };
 
   useEffect(() => {
@@ -26,8 +32,8 @@ const CreateTitle = () => {
       <section className="">
         <div className="d-flex">
           <Formik
-            initialValues={{ title: "", companyId: "" }}
-            validationSchema={""}
+            initialValues={SurveyValuesModel}
+            validationSchema={SurveyValuesValidationScheme}
             onSubmit={(_values) => {
               createNewSurveyTitle(_values);
             }}
@@ -44,9 +50,9 @@ const CreateTitle = () => {
                     />
                     <label htmlFor="floatingInput">
                       {"Survey Title"}
-                      {errors.firstName && touched.firstName ? (
+                      {errors.title && touched.title ? (
                         <span className="text-danger">
-                          <br /> {errors.firstName}
+                          <br /> {errors.title}
                         </span>
                       ) : null}
                     </label>

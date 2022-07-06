@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 //import Styles from './CreateSurvey.module.scss'
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setSurveyComponent } from "../../../../Services/Store/CreateSurvey";
 import CreateTitle from "./Components/CreateTitle";
 import CreateQuestion from "./Components/CreateQuestion";
 import CreateOptions from "./Components/CreateOptions";
@@ -10,8 +8,7 @@ import AssignUsers from "./Components/AssignUsers";
 import Preview from "./Components/Preview";
 
 const CreateSurvey = () => {
-  const dispatch = useDispatch();
-  const { componentName } = useSelector((state) => state.surveyComponent);
+  const { componentName } = useSelector((state) => state.createSurvey);
   const setComponent = (componentName) => {
     if (!componentName) {
       return null;
