@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./AdminDashboard.module.scss";
+// import Styles from "./AdminDashboard.module.scss";
 import { useSelector } from "react-redux";
 import CreateCompany from "../../Components/AdminDashboard/Companies/CreateCompany";
 import CompanyList from "../../Components/AdminDashboard/Companies/CompanyList";
@@ -13,7 +13,7 @@ import Results from "../../Components/AdminDashboard/Results";
 
 
 const AdminDashboard = () => {
-  const dCompName = useSelector((state) => state.dashboardComponents.name);
+  const dCompName = useSelector((state) => state.dashboard.name);
   const setComponent = (componentName) => {
     if (!dCompName) {
       return null;

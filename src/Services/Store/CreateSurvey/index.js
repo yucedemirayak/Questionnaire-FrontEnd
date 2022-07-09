@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { _setSurveyComponent, _setSurveyValues } from "./createSurveyActions";
+import { _setQuestionQTY, _setSurveyComponent, _setSurveyValues } from "./createSurveyActions";
 import { getCompanyNameById } from "./getCompanyNameById";
 
 const createSurveyStore = createSlice({
@@ -10,12 +10,12 @@ const createSurveyStore = createSlice({
       title: "",
       companyId: "",
       companyName: "",
-      questionQTY: "1",
+      questionQTY: "",
       questions: [
         {
           title: "",
           questionType: "",
-          optionQTY: "1",
+          optionQTY: 0,
           options: [{ text: "", optionType: ""}],
         },
       ],
@@ -24,6 +24,7 @@ const createSurveyStore = createSlice({
   reducers: {
     setSurveyComponent: _setSurveyComponent,
     setSurveyValues: _setSurveyValues,
+    setQuestionQTY: _setQuestionQTY,
   },
   extraReducers: {
     [getCompanyNameById.fulfilled]: (state, action) => {
@@ -35,6 +36,6 @@ const createSurveyStore = createSlice({
   },
 });
 
-export const { setSurveyComponent, setSurveyValues } = createSurveyStore.actions;
+export const { setSurveyComponent, setSurveyValues, setQuestionQTY } = createSurveyStore.actions;
 
 export default createSurveyStore.reducer;

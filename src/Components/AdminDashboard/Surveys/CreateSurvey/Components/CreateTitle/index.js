@@ -19,7 +19,6 @@ const CreateTitle = () => {
   const createNewSurveyTitle = async (values) => {
     await dispatch(setSurveyValues(values));
     await dispatch(setSurveyComponent("CreateQuestion"));
-    console.log(values);
     var companyId = Object.values(values)[1];
     await dispatch(getCompanyNameById(companyId));
   };

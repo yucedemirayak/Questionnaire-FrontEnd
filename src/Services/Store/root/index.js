@@ -12,7 +12,7 @@ import createSurveyStore from "../CreateSurvey"
 
 const rootReducer = combineReducers({
   auth: authStore,
-  dashboardComponents: dashboardStore,
+  dashboard: dashboardStore,
   login: loginStore,
   company: companyStore,
   manager: managerStore,
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth" , "company" , "manager", "createSurvey"],
+  whitelist: ["auth" , "company" , "manager", "createSurvey", "dashboar"],
 };
 
 const reducers = persistReducer(persistConfig, rootReducer);
