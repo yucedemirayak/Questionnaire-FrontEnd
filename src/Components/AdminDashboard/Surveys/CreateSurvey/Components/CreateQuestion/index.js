@@ -19,6 +19,13 @@ const CreateQuestion = () => {
     (state) => state.createSurvey.survey.questionQTY
   );
 
+  const questions = useSelector((state) => state.createSurvey.survey.questions)
+
+  const uploadQuestions = async (values) => {
+    console.log(values);
+
+  }
+
   const changeQuestionQty = (qty) => {
     dispatch(setQuestionQTY(qty));
   };
@@ -48,13 +55,13 @@ const CreateQuestion = () => {
         initialValues={{
           title: "",
           questionType: questionTypes.MULTIPLE_CHOICE.toString(),
-          optionQTY: 0,
-          optionTexts: [],
-          questionId: qId,
+          optionQTY: 1,
+          options: [],
         }}
         validationSchema={""}
-        onSubmit={(_values) => {
-          console.log(_values);
+        onSubmit={(values) => {
+          delete values.optionQTY;
+          uploadQuestions(values)
         }}
       >
         {({ errors, touched, handleChange, values }) => (
@@ -195,7 +202,7 @@ const CreateQuestion = () => {
     } else if (fieldType === "text") {
       return (
         <div>
-          <Field type="text" value={""} className="form-control"></Field>
+          <Field type="text" name="optionTexts" className="form-control"></Field>
         </div>
       );
     } else {
@@ -243,11 +250,9 @@ const CreateQuestion = () => {
           <div className="d-flex">
             <Formik
               innerRef={qtyFormRef}
-              initialValues={{ questionQTY: 0 }}
+              initialValues={{ questionQTY: 1 }}
               validationSchema={""}
-              onSubmit={(values) => {
-                changeQuestionQty(values.questionQTY);
-              }}
+              onSubmit={(values) => {console.log(values)}}
             >
               {({ errors, touched, handleChange, values }) => (
                 <Form

@@ -15,8 +15,7 @@ const createSurveyStore = createSlice({
         {
           title: "",
           questionType: "",
-          optionQTY: 0,
-          options: [{ text: "", optionType: ""}],
+          options: [{ text: ""}],
         },
       ],
     },
